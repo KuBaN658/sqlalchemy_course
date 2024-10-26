@@ -21,11 +21,17 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from database import Base, str_256
 
 intpk = Annotated[int, mapped_column(primary_key=True)]
-created_at = Annotated[datetime.datetime, mapped_column(server_default=text("TIMEZONE('utc', now())"))]
-updated_at = Annotated[datetime.datetime, mapped_column(
-        server_default=text("TIMEZONE('utc', now())"),
-        onupdate=datetime.datetime.utcnow,
-    )]
+
+created_at = Annotated[
+        datetime.datetime, 
+        mapped_column(server_default=text("TIMEZONE('utc', now())"))
+    ]
+
+updated_at = Annotated[
+        datetime.datetime, mapped_column(
+            server_default=text("TIMEZONE('utc', now())"),
+            onupdate=datetime.datetime.now(datetime.timezone.utc),
+        )]
 
 
 class WorkersOrm(Base):
@@ -105,23 +111,6 @@ class VacanciesRepliesOrm(Base):
     )
 
     cover_letter: Mapped[Optional[str]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -52,6 +52,7 @@ class SyncCore:
     def update_worker(worker_id: int = 2, new_username: str = "Misha"):
         with sync_engine.connect() as conn:
             # stmt = text("UPDATE workers SET username=:username WHERE id=:id")
+            # защита от sql инъекций
             # stmt = stmt.bindparams(username=new_username, id=worker_id)
             stmt = (
                 update(workers_table)

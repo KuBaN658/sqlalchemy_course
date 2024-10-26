@@ -1,3 +1,27 @@
 [tool.isort]
 profile = "hug"
 src_paths = ["src"]
+[tool.poetry]
+name = "sqlalchemy-course"
+version = "0.1.0"
+description = ""
+authors = ["KuBaN658 <garkovski_dmitri@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+alembic = "^1.12"
+asyncpg = "^0.28.0"
+psycopg = "^3.1.10"
+psycopg-binary = "^3.1.10"
+sqlalchemy = "^2.0.20"
+
+fastapi = "^0.103.1"
+pydantic = "^2.3.0"
+pydantic-settings = "^2.0.3"
+uvicorn = "^0.23.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
